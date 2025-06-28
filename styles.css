@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  text-align: center;
+}
+
+header, footer {
+  background: #222;
+  color: #fff;
+  padding: 1em 0;
+}
+
+main {
+  padding: 2em;
+}
+
+.exercise-card {
+  background: white;
+  padding: 1em;
+  margin: 1em auto;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.exercise-card input[type="checkbox"] {
+  position: absolute;
+  left: 1em;
+  top: 1.2em;
+  transform: scale(1.5);
+}
+
+.exercise-card h2 {
+  margin-left: 2em;
+}
+
+.exercise-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin: 1em 0;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
