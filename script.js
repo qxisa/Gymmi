@@ -25,36 +25,43 @@ const workouts = {
   ]
 };
 
-const today = new Date().toLocaleString("en-us", { weekday: "long" });
-document.getElementById("day-name").textContent = today;
+const days = Object.keys(workouts);
+let currentDayIndex = new Date().getDay() - 1; // Sunday = 0, so shift for Monday start
 
+if (currentDayIndex < 0 || currentDayIndex >= days.length) currentDayIndex = 0;
+
+const dayNameEl = document.getElementById("day-name");
+const currentDayEl = document.getElementById("current-day");
 const container = document.getElementById("workout-container");
+
 let completedCount = 0;
 
-function checkAllComplete() {
-  const total = document.querySelectorAll('.exercise-card').length;
-  if (completedCount === total) {
-    confetti();
-    alert("🎉 Good job! You finished all your exercises for today!");
-  }
-}
+function renderDay(index) {
+  const day = days[index];
+  completedCount = 0;
+  container.innerHTML = "";
+  dayNameEl.textContent = day;
+  currentDayEl.textContent = day;
 
-if (workouts[today]) {
-  workouts[today].forEach((exercise, index) => {
+  if (!workouts[day]) {
+    container.innerHTML = "<p>No workout assigned for this day.</p>";
+    return;
+  }
+
+  workouts[day].forEach((exercise, i) => {
     const card = document.createElement("div");
     card.className = "exercise-card";
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.id = `exercise-${index}`;
-    checkbox.addEventListener('change', () => {
-      if (checkbox.checked) completedCount++;
-      else completedCount--;
+    checkbox.id = `exercise-${i}`;
+    checkbox.addEventListener("change", () => {
+      checkbox.checked ? completedCount++ : completedCount--;
       checkAllComplete();
     });
 
     const label = document.createElement("label");
-    label.htmlFor = `exercise-${index}`;
+    label.htmlFor = `exercise-${i}`;
     label.innerHTML = `<h2>${exercise.name}</h2>`;
 
     card.appendChild(checkbox);
@@ -65,6 +72,25 @@ if (workouts[today]) {
     `;
     container.appendChild(card);
   });
-} else {
-  container.innerHTML = "<p>Today is a rest or active recovery day. Great job staying consistent!</p>";
 }
+
+function checkAllComplete() {
+  const total = document.querySelectorAll('.exercise-card').length;
+  if (completedCount === total) {
+    confetti();
+    alert("🎉 Good job! You finished all your exercises for today!");
+  }
+}
+
+document.getElementById("prev-day").addEventListener("click", () => {
+  currentDayIndex = (currentDayIndex - 1 + days.length) % days.length;
+  renderDay(currentDayIndex);
+});
+
+document.getElementById("next-day").addEventListener("click", () => {
+  currentDayIndex = (currentDayIndex + 1) % days.length;
+  renderDay(currentDayIndex);
+});
+
+// Initial load
+renderDay(currentDayIndex);
