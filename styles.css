@@ -9,7 +9,7 @@ body {
 }
 
 header, footer {
-  background: #222;
+  background: black;
   color: white;
   padding: 1em;
 }
@@ -20,6 +20,8 @@ header h1 {
 
 main {
   padding: 1.5em 1em;
+  background:#393e46;
+  color: #f2f2f2;
 }
 
 /* Navigation */
@@ -33,18 +35,18 @@ main {
 }
 
 #nav-controls button {
-  background-color: #2e7d32;
+  background-color: #f96d00;
   color: white;
   border: none;
   padding: 0.6em 1.2em;
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.5s ease;
 }
 
 #nav-controls button:hover {
-  background-color: #1b5e20;
+  background-color: #222831;
 }
 
 #current-day {
@@ -54,7 +56,7 @@ main {
 
 /* Exercise cards */
 .exercise-card {
-  background: white;
+  background: #f96d00;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   padding: 1em;
@@ -114,7 +116,7 @@ main {
 }
 
 .yoga-table tr {
-  background: white;
+  background: #f96d00;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
