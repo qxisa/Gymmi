@@ -43,3 +43,8 @@
   width: 100px;
   border-radius: 5px;
 }
+
+.exercise-card p {
+  margin: 0.5em 0;
+  font-size: 0.95rem;
+}
