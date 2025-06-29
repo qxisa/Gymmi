@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { title: "Posture & Flexibility", img: "images/stretch3.jpg", link: "https://www.youtube.com/watch?v=8TuRYV71Rgo" }
   ];
 
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let currentDayIndex = new Date().getDay();
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let currentDayIndex = new Date().getDay();
 
 
   const dayNameEl = document.getElementById("day-name");
